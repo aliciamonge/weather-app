@@ -1,0 +1,42 @@
+h1 {
+  color: rgb(0, 0, 0);
+  font-size: 55px;
+  margin: 20px 0 0 0;
+}
+h2 {
+  margin: 20px 0 10px 0;
+  font-size: 50px;
+}
+.container {
+  margin: 50px auto 10px auto;
+  padding: 0;
+  text-align: center;
+  max-width: 850px;
+}
+.main-container {
+  border-radius: 10px;
+  background: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/021/403/original/day.jpg?1637491130"),
+    #9cdafd;
+}
+.card {
+  margin: 20px 0 20px 0;
+  padding: 0;
+}
+
+.five-day-forecast {
+  background: #aae0f75b;
+}
+.card-subtitle {
+  color: #343435;
+}
+.units {
+  font-size: 20px;
+  text-decoration: none;
+}
+button {
+  margin: 0 5px;
+}
+.coded-by {
+  text-align: center;
+  color: #8c8c8d;
+}

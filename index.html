@@ -1,14 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>WeatherApp</title>
+    <link href="src/style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1>Hello</h1>
-    <script src="script.js"></script>
+    <div class="container">
+      <div class="card main-container">
+        <div class="card-body">
+          <form class="d-flex search-city">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Enter city"
+              aria-label="Search"
+              id="city-wanted"
+            />
+            <button class="btn btn-secondary btn-lg" type="submit">🔍</button>
+            <button
+              class="btn btn-secondary btn-lg btncurrent-location"
+              type="submit"
+            >
+              Current
+            </button>
+          </form>
+          <div class="current-weather">
+            <div class="row">
+              <div class="col city">
+                <h1>Madrid</h1>
+              </div>
+              <div class="col current-temperature">
+                <h2>
+                  ☀ <span class="currentTemp">15ºC</span
+                  ><span class="units"
+                    ><a href="#" id="celsius"> </a>
+                    <a href="#" id="farenheit"></a
+                  ></span>
+                </h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col time">
+                <p>Sunday, 21 November 2021, 15:30h</p>
+              </div>
+              <div class="col current-temperature-sky">
+                Partially cloudy <br />
+                17/13ºC | 5% precipitation
+              </div>
+            </div>
+          </div>
+          <div class="card five-day-forecast">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title">🌤</h5>
+                  <h6 class="card-subtitle mb-2">Monday</h6>
+                  <p class="card-text">18/12ºC <br />💧0%</p>
+                </div>
+
+                <div class="col">
+                  <h5 class="card-title">☀</h5>
+                  <h6 class="card-subtitle mb-2">Tuesday</h6>
+                  <p class="card-text">15/13ºC <br />💧0%</p>
+                </div>
+
+                <div class="col">
+                  <h5 class="card-title">🌤</h5>
+                  <h6 class="card-subtitle mb-2">Wednesday</h6>
+                  <p class="card-text">16/14ºC <br />💧5%</p>
+                </div>
+
+                <div class="col">
+                  <h5 class="card-title">☁</h5>
+                  <h6 class="card-subtitle mb-2">Thursday</h6>
+                  <p class="card-text">15/13ºC <br />💧10%</p>
+                </div>
+
+                <div class="col">
+                  <h5 class="card-title">🌧</h5>
+                  <h6 class="card-subtitle mb-2">Friday</h6>
+                  <p class="card-text">14/12ºC <br />💧70%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="coded-by">Open-source code by <a href="#">Alicia Monge</a></p>
+    <script src="src/script.js"></script>
   </body>
 </html>
