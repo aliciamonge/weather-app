@@ -43,6 +43,8 @@ function getCity(event) {
   axios.get(apiWeather).then(showTemperature);
 }
 function showTemperature(response) {
+  let cityHeading = document.querySelector("h1");
+  cityHeading.innerHTML = `${response.data.name}`;
   let currentTemp = document.querySelector(".currentTemp");
   let currentlyTemp = Math.round(response.data.main.temp);
   currentTemp.innerHTML = `${currentlyTemp}ºC`;
