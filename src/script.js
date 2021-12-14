@@ -48,13 +48,23 @@ function showTemperature(response) {
   let currentTemp = document.querySelector(".currentTemp");
   let currentlyTemp = Math.round(response.data.main.temp);
   currentTemp.innerHTML = `${currentlyTemp}ºC`;
+  let currentTempMax = document.querySelector(".current-max-temp");
+  let currentlyTempMax = Math.round(response.data.main.temp_max);
+  currentTempMax.innerHTML = `${currentlyTempMax}ºC`;
+  let currentTempMin = document.querySelector(".current-min-temp");
+  let currentlyTempMin = Math.round(response.data.main.temp_min);
+  currentTempMin.innerHTML = `${currentlyTempMin}ºC`;
+  let currentHumidity = document.querySelector(".current-humidity");
+  let currentlyHumidity = Math.round(response.data.main.humidity);
+  currentHumidity.innerHTML = `${currentlyHumidity}`;
+  let currentSky = document.querySelector(".current-sky");
+  let currentlySky = `${response.data.weather[0].main}`;
+  currentSky.innerHTML = `${currentlySky}`;
 }
 function getcurrentLoc() {
   navigator.geolocation.getCurrentPosition(getcurrentLocation);
 }
 function getcurrentLocation(position) {
-  let cityHeading = document.querySelector("h1");
-  cityHeading.innerHTML = `Currently there`;
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiKey = "0198dea1996842c503892bac0bb89258";
