@@ -40,9 +40,9 @@ function getCity(event) {
   cityHeading.innerHTML = `${cityWanted.value}`;
   let apiKey = "0198dea1996842c503892bac0bb89258";
   let apiWeather = `https://api.openweathermap.org/data/2.5/weather?q=${cityWanted.value}&appid=${apiKey}&units=metric`;
-  axios.get(apiWeather).then(showTemperature);
+  axios.get(apiWeather).then(showNowTemperature);
 }
-function showTemperature(response) {
+function showNowTemperature(response) {
   let cityHeading = document.querySelector("h1");
   cityHeading.innerHTML = `${response.data.name}`;
   let currentTemp = document.querySelector(".currentTemp");
@@ -69,7 +69,7 @@ function getcurrentLocation(position) {
   let lon = position.coords.longitude;
   let apiKey = "0198dea1996842c503892bac0bb89258";
   let apiWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiWeather).then(showTemperature);
+  axios.get(apiWeather).then(showNowTemperature);
 }
 let updateTime = document.querySelector(".time");
 updateTime.innerHTML = formatDate();
