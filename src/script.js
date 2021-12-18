@@ -61,6 +61,11 @@ function showNowTemperature(response) {
   let currentSky = document.querySelector(".current-sky");
   let currentlySky = `${response.data.weather[0].main}`;
   currentSky.innerHTML = `${currentlySky}`;
+  let changeIcon = document.querySelector("#icon");
+  changeIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 function getcurrentLoc() {
   navigator.geolocation.getCurrentPosition(getcurrentLocation);
