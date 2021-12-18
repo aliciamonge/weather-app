@@ -25,6 +25,9 @@ function formatDate() {
   ];
   let weekday = days[now.getDay()];
   let hour = now.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
   let month = months[now.getMonth()];
   let minutes = now.getMinutes();
   if (minutes < 10) {
@@ -36,15 +39,13 @@ function formatDate() {
 function getCity(event) {
   event.preventDefault();
   let cityWanted = document.querySelector("#city-wanted");
-  let cityHeading = document.querySelector("h1");
-  cityHeading.innerHTML = `${cityWanted.value}`;
   let apiKey = "0198dea1996842c503892bac0bb89258";
   let apiWeather = `https://api.openweathermap.org/data/2.5/weather?q=${cityWanted.value}&appid=${apiKey}&units=metric`;
   axios.get(apiWeather).then(showNowTemperature);
 }
 function showNowTemperature(response) {
   let cityHeading = document.querySelector("h1");
-  cityHeading.innerHTML = `${response.data.name}`;
+  cityHeading.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   let currentTemp = document.querySelector(".currentTemp");
   let currentlyTemp = Math.round(response.data.main.temp);
   currentTemp.innerHTML = `${currentlyTemp}ºC`;
