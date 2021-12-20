@@ -48,7 +48,7 @@ function showNowTemperature(response) {
   cityHeading.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   let currentTemp = document.querySelector(".currentTemp");
   let currentlyTemp = Math.round(response.data.main.temp);
-  currentTemp.innerHTML = `${currentlyTemp}ºC`;
+  currentTemp.innerHTML = `${currentlyTemp}º`;
   let currentTempMax = document.querySelector(".current-max-temp");
   let currentlyTempMax = Math.round(response.data.main.temp_max);
   currentTempMax.innerHTML = `${currentlyTempMax}ºC`;
@@ -66,6 +66,7 @@ function showNowTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  celsiusTemperature = response.data.main.temp;
 }
 function getcurrentLoc() {
   navigator.geolocation.getCurrentPosition(getcurrentLocation);
@@ -77,10 +78,33 @@ function getcurrentLocation(position) {
   let apiWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiWeather).then(showNowTemperature);
 }
+function showFahrenheit(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector(".currentTemp");
+  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  currentTemp.innerHTML = `${Math.round(fahrenheitTemp)}º`;
+  fahrenheitTemperature.classList.add("active");
+  celsiusTemp.classList.remove("active");
+}
+function showCelsius(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector(".currentTemp");
+  currentTemp.innerHTML = `${Math.round(celsiusTemperature)}º`;
+  fahrenheitTemperature.classList.remove("active");
+  celsiusTemp.classList.add("active");
+}
+let celsiusTemperature = null;
 let updateTime = document.querySelector(".time");
 updateTime.innerHTML = formatDate();
 
 let searchCityForm = document.querySelector(".search-city");
 searchCityForm.addEventListener("submit", getCity);
+
 let currentLocationTemp = document.querySelector(".btncurrent-location");
 currentLocationTemp.addEventListener("click", getcurrentLoc);
+
+let fahrenheitTemperature = document.querySelector("#fahrenheit");
+fahrenheitTemperature.addEventListener("click", showFahrenheit);
+
+let celsiusTemp = document.querySelector("#celsius");
+celsiusTemp.addEventListener("click", showCelsius);

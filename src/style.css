@@ -31,7 +31,6 @@ h2 {
 }
 .units {
   font-size: 20px;
-  text-decoration: none;
 }
 button {
   margin: 0 5px;
@@ -39,4 +38,18 @@ button {
 .coded-by {
   text-align: center;
   color: #8c8c8d;
+}
+.active {
+  color: rgb(0, 0, 0);
+}
+.active:hover {
+  color: rgb(0, 0, 0);
+}
+#fahrenheit {
+  text-decoration: none;
+  cursor: default;
+}
+#celsius {
+  text-decoration: none;
+  cursor: default;
 }
