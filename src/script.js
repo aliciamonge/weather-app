@@ -62,7 +62,8 @@ function showNowTemperature(response) {
   let currentlySky = `${response.data.weather[0].description}`;
   currentSky.innerHTML = `${currentlySky}`;
   let currentWind = document.querySelector(".current-wind");
-  currentWind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
+  let currentlyWind = Math.round(response.data.wind.speed);
+  currentWind.innerHTML = `Wind: ${currentlyWind} km/h`;
   let changeIcon = document.querySelector("#icon");
   changeIcon.setAttribute(
     "src",
