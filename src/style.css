@@ -18,6 +18,9 @@ h2 {
   background: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/021/403/original/day.jpg?1637491130"),
     #9cdafd;
 }
+.current-weather-sky:first-letter {
+  text-transform: capitalize;
+}
 .card {
   margin: 20px 0 20px 0;
   padding: 0;
@@ -47,9 +50,7 @@ button {
 }
 #fahrenheit {
   text-decoration: none;
-  cursor: default;
 }
 #celsius {
   text-decoration: none;
-  cursor: default;
 }

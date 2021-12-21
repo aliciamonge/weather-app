@@ -59,8 +59,10 @@ function showNowTemperature(response) {
   let currentlyHumidity = Math.round(response.data.main.humidity);
   currentHumidity.innerHTML = `${currentlyHumidity}`;
   let currentSky = document.querySelector(".current-sky");
-  let currentlySky = `${response.data.weather[0].main}`;
+  let currentlySky = `${response.data.weather[0].description}`;
   currentSky.innerHTML = `${currentlySky}`;
+  let currentWind = document.querySelector(".current-wind");
+  currentWind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
   let changeIcon = document.querySelector("#icon");
   changeIcon.setAttribute(
     "src",
