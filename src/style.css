@@ -11,7 +11,7 @@ h2 {
   margin: 50px auto 10px auto;
   padding: 0;
   text-align: center;
-  max-width: 850px;
+  max-width: 800px;
 }
 .main-container {
   border-radius: 10px;
@@ -28,6 +28,7 @@ h2 {
 
 .five-day-forecast {
   background: #aae0f75b;
+  margin: 20px auto 0px auto;
 }
 .card-subtitle {
   color: #343435;
