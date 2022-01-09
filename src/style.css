@@ -31,7 +31,7 @@ h2 {
   padding: 0;
 }
 
-.five-day-forecast {
+#forecast {
   background: #aae0f75b;
   margin: 20px auto 0px auto;
 }

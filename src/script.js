@@ -78,7 +78,41 @@ function showNowTemperature(response) {
   celsiusTemperature = response.data.main.temp;
   getForecast(response.data.coord);
 }
-function displayForecast() {}
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
+                <div class="col">
+                  <img src="http://openweathermap.org/img/wn/${
+                    forecastDay.weather[0].icon
+                  }@2x.png" alt=""/>
+                  <h6 class="card-subtitle mb-2 weekday-forecast">${formatDay(
+                    forecastDay.dt
+                  )}</h6>
+                  <p class="card-text"><span class="forecast-max-temp">${Math.round(
+                    forecastDay.temp.max
+                  )} </span>/<span class="forecast-min-temp">${Math.round(
+          forecastDay.temp.min
+        )}</span>ºC <br />💧0%</p>
+                </div>
+        `;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 function getcurrentLoc() {
   navigator.geolocation.getCurrentPosition(getcurrentLocation);
 }
