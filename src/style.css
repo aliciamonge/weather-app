@@ -48,15 +48,3 @@ button {
   text-align: center;
   color: #8c8c8d;
 }
-.active {
-  color: rgb(0, 0, 0);
-}
-.active:hover {
-  color: rgb(0, 0, 0);
-}
-#fahrenheit {
-  text-decoration: none;
-}
-#celsius {
-  text-decoration: none;
-}
