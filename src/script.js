@@ -37,13 +37,17 @@ function formatDate() {
   let currentDate = `${weekday} ${hour}:${minutes}`;
   return currentDate;
 }
-function getCity(event) {
-  event.preventDefault();
-  let cityWanted = document.querySelector("#city-wanted");
+function getCity(city) {
   let apiKey = "0198dea1996842c503892bac0bb89258";
-  let apiWeather = `https://api.openweathermap.org/data/2.5/weather?q=${cityWanted.value}&appid=${apiKey}&units=metric`;
+  let apiWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiWeather).then(showNowTemperature);
 }
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityWanted = document.querySelector("#city-wanted");
+  getCity(cityWanted.value);
+}
+
 function getForecast(coordinates) {
   let apiKey = "0198dea1996842c503892bac0bb89258";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
@@ -54,7 +58,7 @@ function showNowTemperature(response) {
   cityHeading.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   let currentTemp = document.querySelector(".currentTemp");
   let currentlyTemp = Math.round(response.data.main.temp);
-  currentTemp.innerHTML = `${currentlyTemp}º`;
+  currentTemp.innerHTML = `${currentlyTemp}`;
   let currentTempMax = document.querySelector(".current-max-temp");
   let currentlyTempMax = Math.round(response.data.main.temp_max);
   currentTempMax.innerHTML = `${currentlyTempMax}ºC`;
@@ -81,7 +85,15 @@ function showNowTemperature(response) {
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   return days[day];
 }
 function displayForecast(response) {
@@ -97,15 +109,15 @@ function displayForecast(response) {
                 <div class="col">
                   <img src="http://openweathermap.org/img/wn/${
                     forecastDay.weather[0].icon
-                  }@2x.png" alt=""/>
+                  }@2x.png" alt="" width=42/>
                   <h6 class="card-subtitle mb-2 weekday-forecast">${formatDay(
                     forecastDay.dt
                   )}</h6>
                   <p class="card-text"><span class="forecast-max-temp">${Math.round(
                     forecastDay.temp.max
-                  )} </span>/<span class="forecast-min-temp">${Math.round(
+                  )} </span> / <span class="forecast-min-temp">${Math.round(
           forecastDay.temp.min
-        )}</span>ºC <br />💧0%</p>
+        )}</span> ºC <br />💧${Math.round(forecastDay.humidity)}%</p>
                 </div>
         `;
     }
@@ -128,7 +140,8 @@ let updateTime = document.querySelector(".time");
 updateTime.innerHTML = formatDate();
 
 let searchCityForm = document.querySelector(".search-city");
-searchCityForm.addEventListener("submit", getCity);
+searchCityForm.addEventListener("submit", handleSubmit);
 
 let currentLocationTemp = document.querySelector(".btncurrent-location");
 currentLocationTemp.addEventListener("click", getcurrentLoc);
+getCity("Madrid");
