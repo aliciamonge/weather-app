@@ -13,10 +13,15 @@ h2 {
   text-align: center;
   max-width: 800px;
 }
-.main-container {
+.daylight {
   border-radius: 10px;
   background: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/021/403/original/day.jpg?1637491130"),
     #9cdafd;
+}
+.nightlight {
+  border-radius: 10px;
+  background: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/023/373/original/pexels-min-an-713664.jpg?1640116880"),
+    #183a4e;
 }
 .current-weather-sky:first-letter {
   text-transform: capitalize;

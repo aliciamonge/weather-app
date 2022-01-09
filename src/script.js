@@ -28,6 +28,7 @@ function formatDate() {
   if (hour < 10) {
     hour = `0${hour}`;
   }
+
   let month = months[now.getMonth()];
   let minutes = now.getMinutes();
   if (minutes < 10) {
@@ -42,6 +43,11 @@ function getCity(event) {
   let apiKey = "0198dea1996842c503892bac0bb89258";
   let apiWeather = `https://api.openweathermap.org/data/2.5/weather?q=${cityWanted.value}&appid=${apiKey}&units=metric`;
   axios.get(apiWeather).then(showNowTemperature);
+}
+function getForecast(coordinates) {
+  let apiKey = "0198dea1996842c503892bac0bb89258";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 function showNowTemperature(response) {
   let cityHeading = document.querySelector("h1");
@@ -70,7 +76,9 @@ function showNowTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   celsiusTemperature = response.data.main.temp;
+  getForecast(response.data.coord);
 }
+function displayForecast() {}
 function getcurrentLoc() {
   navigator.geolocation.getCurrentPosition(getcurrentLocation);
 }
