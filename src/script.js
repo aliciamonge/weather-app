@@ -9,27 +9,11 @@ function formatDate() {
     "Friday",
     "Saturday",
   ];
-  let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
   let weekday = days[now.getDay()];
   let hour = now.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
   }
-
-  let month = months[now.getMonth()];
   let minutes = now.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
@@ -61,10 +45,10 @@ function showNowTemperature(response) {
   currentTemp.innerHTML = `${currentlyTemp}`;
   let currentTempMax = document.querySelector(".current-max-temp");
   let currentlyTempMax = Math.round(response.data.main.temp_max);
-  currentTempMax.innerHTML = `${currentlyTempMax}ºC`;
+  currentTempMax.innerHTML = `${currentlyTempMax}º`;
   let currentTempMin = document.querySelector(".current-min-temp");
   let currentlyTempMin = Math.round(response.data.main.temp_min);
-  currentTempMin.innerHTML = `${currentlyTempMin}ºC`;
+  currentTempMin.innerHTML = `${currentlyTempMin}º C`;
   let currentHumidity = document.querySelector(".current-humidity");
   let currentlyHumidity = Math.round(response.data.main.humidity);
   currentHumidity.innerHTML = `${currentlyHumidity}`;
@@ -115,9 +99,9 @@ function displayForecast(response) {
                   )}</h6>
                   <p class="card-text"><span class="forecast-max-temp">${Math.round(
                     forecastDay.temp.max
-                  )} </span> / <span class="forecast-min-temp">${Math.round(
+                  )}º </span> / <span class="forecast-min-temp">${Math.round(
           forecastDay.temp.min
-        )}</span> ºC <br />💧${Math.round(forecastDay.humidity)}%</p>
+        )}</span>º C <br />💧${Math.round(forecastDay.humidity)}%</p>
                 </div>
         `;
     }

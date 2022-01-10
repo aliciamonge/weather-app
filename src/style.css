@@ -12,30 +12,34 @@ h2 {
   margin: 50px auto 10px auto;
   padding: 0;
   text-align: center;
-  max-width: 700px;
+  max-width: 750px;
   font-family: "Montserrat", sans-serif;
 }
 .current-time {
-  font-size: 15px;
+  font-size: 20px;
 }
 .time {
   font-size: 20px;
 }
 .daylight {
   border-radius: 10px;
-  background: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/021/403/original/day.jpg?1637491130"),
-    #9cdafd;
+  background: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/024/674/original/clouds-g7695dadf5_1280.png?1641848653"),
+    #a7daf8;
+  background-size: 750px;
+  background-repeat: no-repeat;
 }
 .nightlight {
   border-radius: 10px;
   background: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/023/373/original/pexels-min-an-713664.jpg?1640116880"),
     #183a4e;
+  background-size: 750px;
+  background-repeat: no-repeat;
 }
 .current-weather-sky:first-letter {
   text-transform: capitalize;
 }
 #forecast {
-  background: #aae0f75b;
+  background: #d3f1fd5b;
   margin: 20px auto 0px auto;
   padding: 20px 0 20px 0;
   border-radius: 5px;
@@ -43,6 +47,15 @@ h2 {
 }
 button {
   margin: 0 5px;
+  background-color: #d3f1fd5b;
+  border-radius: 5px;
+  border-color: #aae0f75b;
+  padding: 10px 20px 10px 20px;
+  transition: all 200ms ease-in-out;
+}
+button:hover {
+  border-color: #dcf5ff5b;
+  background-color: #aae0f786;
 }
 .coded-by {
   text-align: center;
