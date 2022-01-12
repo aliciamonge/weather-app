@@ -65,6 +65,28 @@ function showNowTemperature(response) {
   );
   celsiusTemperature = response.data.main.temp;
   getForecast(response.data.coord);
+  let icon = response.data.weather[0].icon;
+  let outerBox = document.querySelector("#main-container");
+  if (
+    icon === "01n" ||
+    icon === "02n" ||
+    icon === "03n" ||
+    icon === "04n" ||
+    icon === "09n" ||
+    icon === "10n" ||
+    icon === "11n" ||
+    icon === "13n" ||
+    icon === "50n"
+  ) {
+    document.querySelector("#main-container").style.backgroundImage =
+      "url('images/night4.jpg')";
+    outerBox.classList.add("nightlight");
+  } else {
+    document.querySelector("#main-container").style.backgroundImage =
+      "url('images/day.png')";
+    outerBox.classList.remove("nightlight");
+    outerBox.classList.add("daylight");
+  }
 }
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
