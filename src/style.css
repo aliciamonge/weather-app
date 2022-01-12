@@ -23,10 +23,13 @@ h2 {
 .daylight {
   border-radius: 10px;
   background-color: rgba(140, 187, 192, 0.795);
+  background-repeat: no-repeat;
+  background-size: 750px;
 }
 .nightlight {
   border-radius: 10px;
   background-size: 750px;
+  background-repeat: no-repeat;
 }
 .current-weather-sky:first-letter {
   text-transform: capitalize;
